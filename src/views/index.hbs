@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 500px;
+            align-self: center;
+            
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Font Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each fonts}}
+                <tr>
+                <th style="vertical-align: middle;" scope="row">{{this.name}}</th>
+                <td><button type="button" class="btn btn-primary btn-sm" data={{this.link}} onclick="copyLink()">Copy</button></td>
+                </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function copyLink() {
+        var copyText = link
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
+
+</body>
+</html>
