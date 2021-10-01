@@ -6,51 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fonts</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <style>
+        {{#each fonts}}
+            @import url(/?font={{this}});
+        {{/each}}
+
         .container {
             max-width: 500px;
+            margin-top: 50px;
             align-self: center;
-            
+            text-align: center;
+        }
+        a {
+            color: black;
+        }
+        a:hover {
+            color: grey;
         }
     </style>
 </head>
 <body>
-
-
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">Font Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each fonts}}
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                <th style="vertical-align: middle;" scope="row">{{this.name}}</th>
-                <td><button type="button" class="btn btn-primary btn-sm" data={{this.link}} onclick="copyLink()">Copy</button></td>
+                <th scope="col">Available Fonts</th>
                 </tr>
-            {{/each}}
+            </thead>
+            <tbody>
+                {{#each fonts}}
+                    <tr>
+                        <th style="vertical-align: middle;" scope="row"><span onclick="copyText('{{this}}')" style="font-family: {{this}};">{{this}}</span></th>
+                    </tr>
+                {{/each}}
 
-        </tbody>
-    </table>
-</div>
-
-<script>
-    function copyLink() {
-        var copyText = link
-
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-        /* Copy the text inside the text field */
-        navigator.clipboard.writeText(copyText.value);
-
-        /* Alert the copied text */
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
-
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function copyText(l) {
+            console.log(l);
+        }
+    </script>
 </body>
 </html>

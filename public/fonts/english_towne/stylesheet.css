@@ -1,8 +1,0 @@
-@font-face {
-    font-weight: normal;
-    font-style: normal;
-    font-family: 'english_towneregular';
-    src: url('fonts/english_towne/englishtowne-webfont.woff2') format('woff2'),
-         url('fonts/english_towne/englishtowne-webfont.woff') format('woff'),
-         url('fonts/english_towne/englishtowne-webfont.ttf') format('truetype');
-}

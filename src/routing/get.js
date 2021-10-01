@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const path = require('path');
-const cors = require('cors');
+const fs = require('fs');
 
 const publicDirectory = path.join(__dirname, '../../public');
 
@@ -10,9 +10,7 @@ router.get("/", (req, res) => {
         res.sendFile(`fonts/${req.query.font}/stylesheet.css`, { root: publicDirectory });
     } else {
         res.render("index", {
-            fonts: [
-                {name: "English Towne", link: "/?font=english_towne"}
-            ]
+            fonts: fs.readdirSync(path.join(publicDirectory, "fonts"))
         });
     }
 });
