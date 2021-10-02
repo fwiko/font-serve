@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <title>Preview of {{font}}</title>
+    <style>
+        @import url(/?font={{font}});
+        .container {
+            margin-top: 50px;
+            max-width: 700px;
+            font-size: xx-large;
+            align-self: center;
+            text-align: center;
+        }
+        .preview {
+            color: black;
+            vertical-align: middle;
+            font-family: {{font}};
+        }
+        a {
+            color: black;
+        }
+        a:hover {
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/"><i class="fas fa-home"></i></a>
+        <table class="table table-striped">
+            <h1 id="mainPreview" class="preview">{{font}}</h1>
+            <hr>
+            <div class="input-group mb-3">
+                <input id="previewInput" type="text" class="form-control" placeholder="Type something here.." value="{{font}}">
+                <div class="input-group-append">
+                    <button onclick="changePreview()"  class="btn btn-primary" type="button">Preview</button>
+                </div>
+            </div>
+            <tbody>
+                <tr>
+                    <th class="preview">{{upper_case}}</th>
+                </tr>
+                <tr>
+                    <th class="preview">{{lower_case}}</th>
+                </tr>
+                <tr>
+                    <th class="preview">{{numbers}}</th>
+                </tr>
+            </tbody>
+            
+        </table>
+
+        <table class="table">
+            <tr>
+                <th><button onclick="copyText('{{font}}')" id="copyButton" type="button" class="btn btn-primary btn-lg btn-block">Copy Link <i class="fas fa-copy"></i></button></th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function changePreview() {
+            var content = document.getElementById("previewInput");
+            if (content.value.length) {
+                document.getElementById("mainPreview").innerHTML = content.value;
+            }
+        }
+
+        function copyText(id) {
+            var link = `${window.location.protocol}//${window.location.host}/?font=${id}`
+            navigator.clipboard.writeText(link);
+        }
+    </script>
+</body>
+</html>

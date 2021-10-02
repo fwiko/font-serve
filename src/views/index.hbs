@@ -6,42 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fonts</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <style>
         {{#each fonts}}
             @import url(/?font={{this}});
         {{/each}}
-
+        table {
+            color: black;
+        }
         .container {
-            max-width: 500px;
             margin-top: 50px;
+            max-width: 750px;
+            font-size: xx-large;
             align-self: center;
             text-align: center;
         }
-        th span {
+        .copy {
+            float: right;
             color: black;
         }
-        th span:hover {
+        .copy:hover {
             color: grey;
             cursor: pointer;
+        }
+        .font-name {
+            float: left;
+        }
+        a {
+            color: black;
+        }
+        a:hover {
+            color: grey;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                <th scope="col">Available Fonts</th>
-                </tr>
-            </thead>
+            <h1>Available Fonts</h1>
+            <hr>
             <tbody>
                 {{#each fonts}}
                     <tr>
-                        <th style="vertical-align: middle;" scope="row">
-                            <span onclick="copyText(this.id)" style="font-family: {{this}};" id="{{this}}">
-                                {{this}}
+                        <th style="vertical-align: middle;" scope="row" class="font-name">
+                            <span style="font-family: {{this}};">
+                                <a href="/preview?font={{this}}">{{this}}</a>
                             </span>
+                        </th>
+                        <th>
+                            <span class="copy" onclick="copyText(this.id)" id="{{this}}">
+                                <i class="fas fa-copy"></i>
+                            </span>
+                            
                         </th>
                     </tr>
                 {{/each}}
