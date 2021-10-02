@@ -9,4 +9,4 @@ RUN npm install
 COPY . /usr/src/app
 EXPOSE 3099
 
-CMD ["node", "app.js"]
+CMD ["node", "src/index.js"]
